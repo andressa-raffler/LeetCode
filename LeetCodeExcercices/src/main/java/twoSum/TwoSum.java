@@ -1,6 +1,6 @@
 package twoSum;
 
-import org.junit.jupiter.api.Test;
+import java.util.HashMap;
 
 /*
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -42,24 +42,9 @@ public class TwoSum {
 
     public int[] testTwoSumDumbWay(int[] nums, int target){
     int sum = 0;
-        for (int i = 0; i < nums.length; i++) {
-        for (int j = 1; j < nums.length; j++) {
-            sum = nums[i]+nums[j];
-            if(sum == target && i != j){
-                return new int[]{i,j};
-            }else{
-                sum = 0;
-            }
-        }
-    }
-        return null;
-}
-
-
-    public static int[] twoSumSmartWay(int[] nums, int target) {
-        int sum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 1; j < nums.length; j++) {
+    int numsLenght = nums.length;
+        for (int i = 0; i < numsLenght; i++) {
+            for (int j = 1; j < numsLenght; j++) {
                 sum = nums[i]+nums[j];
                 if(sum == target && i != j){
                     return new int[]{i,j};
@@ -71,4 +56,23 @@ public class TwoSum {
         return null;
     }
 
+
+    public int[] twoSumWithHashMap(int[] nums, int target) {
+        int numsLenght = nums.length;
+
+        HashMap<Integer, Integer> numsMap = new HashMap<>();
+        for (int i = 0; i < numsLenght; i++) {
+            numsMap.put(nums[i],i);
+        }
+
+        for (int i = 0; i < numsLenght; i++) {
+            int complement = target - nums[i];
+            if (numsMap.containsKey(i) && numsMap.get(complement) != i) {
+                return new int[]{i, numsMap.get(complement)};
+            }
+        }
+        return new int[]{};
+    }
 }
+
+
