@@ -15,4 +15,17 @@ class TwoSumTest extends LeetCodeExcercicesApplication {
         assertArrayEquals(new int[]{1,2}, answer);
     }
 
+    @Test
+    void twoSumWithHashMap() {
+        TwoSum twoSum = new TwoSum();
+        int[] answer = twoSum.twoSumWithHashMap(new int[]{1, 5, 5,}, 10);
+        assertArrayEquals(new int[]{1,2}, answer);
+    }
+
+    @Test
+    void twoSumWithDoubleHashMap() {
+        TwoSum twoSum = new TwoSum();
+        int[] answer = twoSum.twoSumWithHashMap(new int[]{1, 5, 5,}, 10);
+        assertArrayEquals(new int[]{1,2}, answer);
+    }
 }
